@@ -1,0 +1,53 @@
+﻿@page "/listusers"
+@using BlazorApp1.Models
+
+@inject HttpClient Http
+
+<h1>User Details</h1>
+<p>
+    <a href="/adduser">Create New User</a>
+</p>
+@if (userList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Status</th>
+   
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in userList)
+            {
+                <tr>
+                    <td>@user.username</td>
+                    <td>@user.firstname</td>
+                    <td>@user.lastname</td>
+                    <td>@user.phone</td>
+                    <td>@user.status</td>
+                    <td>
+                        <a href='/edituser/@user.id'>Edit</a>
+                        <a href='/deleteuser/@user.id'>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@functions {
+    private Users[] userList;
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //    userList = await Http.GetFromJsonAsync<Users[]>("/api/Users/Get");
+    // }
+}
