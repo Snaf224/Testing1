@@ -1,0 +1,1 @@
+https://zealous-desert-09e073403.3.azurestaticapps.net/docs/tutorials/todo-list-app/creating-a-model-and-viewmodel
